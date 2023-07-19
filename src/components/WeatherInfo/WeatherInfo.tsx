@@ -1,9 +1,13 @@
 import './WeatherInfo.css'
 
-export function WeatherInfo() {
+interface WeatherInfoProps {
+  weatherData: unknown
+}
+
+export function WeatherInfo({ weatherData }: WeatherInfoProps) {
   return (
     <div className="weather-info">
-      <p>Weather info here</p>
+      <p>{JSON.stringify(weatherData)}</p>
     </div>
   )
 }

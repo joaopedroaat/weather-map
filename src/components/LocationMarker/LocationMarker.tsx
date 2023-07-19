@@ -2,11 +2,17 @@ import { LatLngExpression, LeafletMouseEvent } from 'leaflet'
 import { useState } from 'react'
 import { Marker, useMapEvents } from 'react-leaflet'
 
-export function LocationMarker() {
+interface LocationMarkerProps {
+  handleLocaleChange: (latitude: number, longitude: number) => void
+}
+
+export function LocationMarker({ handleLocaleChange }: LocationMarkerProps) {
   const [position, setPosition] = useState<null | LatLngExpression>(null)
   useMapEvents({
     click(evt: LeafletMouseEvent) {
-      setPosition(evt.latlng)
+      const { lat, lng } = evt.latlng
+      setPosition([lat, lng])
+      handleLocaleChange(lat, lng)
     },
   })
 

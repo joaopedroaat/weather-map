@@ -9,7 +9,7 @@ export function GlobeMap() {
       center={[0, 0]}
       zoom={3}
       scrollWheelZoom={true}
-      style={{ height: '100%' }}
+      style={{ height: '100%', cursor: 'default' }}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

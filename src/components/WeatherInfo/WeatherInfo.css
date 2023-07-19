@@ -1,0 +1,15 @@
+.weather-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  margin: 1rem;
+
+  min-width: 300px;
+  min-height: 150px;
+
+  border: 1px solid black;
+  background: white;
+
+  z-index: 10000;
+}

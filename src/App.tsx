@@ -1,4 +1,15 @@
-export function App() {
+import { GlobeMap } from './components/GlobeMap/GlobeMap'
 
-  return <h1>Weather Map</h1>
+export function App() {
+  return (
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        margin: '0',
+      }}
+    >
+      <GlobeMap />
+    </div>
+  )
 }

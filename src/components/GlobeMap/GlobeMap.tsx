@@ -1,5 +1,7 @@
-import 'leaflet/dist/leaflet.css'
 import { MapContainer, TileLayer } from 'react-leaflet'
+import { LocationMarker } from '../LocationMarker/LocationMarker'
+
+import 'leaflet/dist/leaflet.css'
 
 export function GlobeMap() {
   return (
@@ -13,6 +15,8 @@ export function GlobeMap() {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+
+      <LocationMarker />
     </MapContainer>
   )
 }

@@ -1,18 +1,18 @@
+import camelcaseKeys from 'camelcase-keys'
 import { useEffect, useState } from 'react'
 import { GlobeMap } from './components/GlobeMap/GlobeMap'
 import { WeatherInfo } from './components/WeatherInfo/WeatherInfo'
-import getWeatherData from './services/WeatherApi'
+import getWeatherData, { WeatherData } from './services/WeatherApi'
 
 export function App() {
-  const [weatherData, setWeatherData] = useState(null)
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null)
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
 
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await getWeatherData(latitude, longitude)
-      console.log(data)
-      setWeatherData(data)
+      setWeatherData(camelcaseKeys(data, { deep: true }))
     }
     fetchWeatherData()
   }, [latitude, longitude])

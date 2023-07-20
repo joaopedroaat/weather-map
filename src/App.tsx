@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { GlobeMap } from './components/GlobeMap/GlobeMap'
 import { WeatherInfo } from './components/WeatherInfo/WeatherInfo'
+import getGeocodeData from './services/GeoCodeApi'
 import getWeatherData, { WeatherData } from './services/WeatherApi'
 
 export function App() {
@@ -13,7 +14,14 @@ export function App() {
       const data = await getWeatherData(latitude, longitude)
       setWeatherData(data)
     }
+
+    const fetchGeocodeData = async () => {
+      const data = await getGeocodeData(latitude, longitude)
+      console.log(data)
+    }
+
     fetchWeatherData()
+    fetchGeocodeData()
   }, [latitude, longitude])
 
   const handleLocaleChange = (latitude: number, longitude: number) => {

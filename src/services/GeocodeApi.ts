@@ -2,16 +2,16 @@ import axios from 'axios'
 
 const API_KEY = import.meta.env.VITE_OPENCAGE_DATA_API_KEY
 
-export interface LocationData {
+export interface GeocodeData {
   city: string | null
   state: string | null
   country: string | null
 }
 
-const getGeocodeData = async (
+export const getGeocodeData = async (
   latitude: number,
   longitude: number,
-): Promise<LocationData | null> => {
+): Promise<GeocodeData | null> => {
   try {
     const response = await axios.get(
       `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY}`,
@@ -32,5 +32,3 @@ const getGeocodeData = async (
     return null
   }
 }
-
-export default getGeocodeData

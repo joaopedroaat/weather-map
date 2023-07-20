@@ -1,27 +1,20 @@
 import { useEffect, useState } from 'react'
 import { GlobeMap } from './components/GlobeMap/GlobeMap'
 import { WeatherInfo } from './components/WeatherInfo/WeatherInfo'
-import getGeocodeData from './services/GeoCodeApi'
-import getWeatherData, { WeatherData } from './services/WeatherApi'
+import { LocationData, getLocationData } from './services/LocationService'
 
 export function App() {
-  const [weatherData, setWeatherData] = useState<WeatherData | null>(null)
+  const [locationData, setLocationData] = useState<LocationData | null>(null)
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
 
   useEffect(() => {
-    const fetchWeatherData = async () => {
-      const data = await getWeatherData(latitude, longitude)
-      setWeatherData(data)
+    const fetchLocationData = async () => {
+      const data = await getLocationData(latitude, longitude)
+      setLocationData(data)
     }
 
-    const fetchGeocodeData = async () => {
-      const data = await getGeocodeData(latitude, longitude)
-      console.log(data)
-    }
-
-    fetchWeatherData()
-    fetchGeocodeData()
+    fetchLocationData()
   }, [latitude, longitude])
 
   const handleLocaleChange = (latitude: number, longitude: number) => {
@@ -38,7 +31,7 @@ export function App() {
         position: 'relative',
       }}
     >
-      <WeatherInfo weatherData={weatherData} />
+      {locationData && <WeatherInfo locationData={locationData} />}
       <GlobeMap handleLocaleChange={handleLocaleChange} />
     </div>
   )

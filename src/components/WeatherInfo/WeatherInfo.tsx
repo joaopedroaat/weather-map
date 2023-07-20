@@ -1,20 +1,17 @@
-import { WeatherData } from '../../services/WeatherApi'
+import { LocationData } from '../../services/LocationService'
 import './WeatherInfo.css'
 
 interface WeatherInfoProps {
-  country?: string
-  state?: string
-  city?: string
-  weatherData: WeatherData | null
+  locationData: LocationData
 }
 
-export function WeatherInfo({ weatherData }: WeatherInfoProps) {
-  const icon = weatherData?.weather[0]?.icon
+export function WeatherInfo({ locationData }: WeatherInfoProps) {
+  const icon = locationData?.weatherData?.weather[0].icon
 
   return (
     <div className="weather-info">
       <p>
-        {weatherData?.weather[0].icon && (
+        {icon && (
           <img src={`http://openweathermap.org/img/wn/${icon}.png`} alt="" />
         )}
       </p>

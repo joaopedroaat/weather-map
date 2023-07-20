@@ -20,7 +20,7 @@ export interface WeatherData {
   }
 }
 
-const getWeatherData = async (
+export const getWeatherData = async (
   latitude: number,
   longitude: number,
 ): Promise<WeatherData | null> => {
@@ -34,5 +34,3 @@ const getWeatherData = async (
     return null
   }
 }
-
-export default getWeatherData

@@ -1,4 +1,3 @@
-import camelcaseKeys from 'camelcase-keys'
 import { useEffect, useState } from 'react'
 import { GlobeMap } from './components/GlobeMap/GlobeMap'
 import { WeatherInfo } from './components/WeatherInfo/WeatherInfo'
@@ -12,7 +11,7 @@ export function App() {
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await getWeatherData(latitude, longitude)
-      setWeatherData(camelcaseKeys(data, { deep: true }))
+      setWeatherData(data)
     }
     fetchWeatherData()
   }, [latitude, longitude])

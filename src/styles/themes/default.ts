@@ -14,5 +14,5 @@ export const defaultTheme = {
   'aqua-alt': '#8ec07c',
   gray: '#a89984',
   'gray-alt': '#928374',
-  fg: '#ebdbb2',
+  fg: '#3c3836',
 } as const

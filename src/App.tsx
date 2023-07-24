@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import { GlobeMap } from './components/GlobeMap/GlobeMap'
 import { WeatherInfo } from './components/WeatherInfo'
 import { LocationData, getLocationData } from './services/LocationService'
+import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 
 export function App() {
@@ -26,6 +27,7 @@ export function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
       <div
         style={{
           width: '100vw',

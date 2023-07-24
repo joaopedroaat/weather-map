@@ -1,0 +1,18 @@
+export const defaultTheme = {
+  bg: '#fbf1c7',
+  red: '#cc241d',
+  'red-alt': '#fb4934',
+  green: '#98971a',
+  'green-alt': '#b8bb26',
+  yellow: '#d79921',
+  'yellow-alt': '#fabd2f',
+  blue: '#458588',
+  'blue-alt': '#83a598',
+  purple: '#b16286',
+  'purple-alt': '#d3869b',
+  aqua: '#689d6a',
+  'aqua-alt': '#8ec07c',
+  gray: '#a89984',
+  'gray-alt': '#928374',
+  fg: '#ebdbb2',
+} as const

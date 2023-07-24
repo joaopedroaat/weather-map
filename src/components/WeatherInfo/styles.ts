@@ -1,4 +1,6 @@
-.weather-info {
+import { styled } from 'styled-components'
+
+export const WeatherInfoContainer = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -12,4 +14,6 @@
   background: white;
 
   z-index: 10000;
-}
+
+  background: ${(props) => props.theme.bg};
+`

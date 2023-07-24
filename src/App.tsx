@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { GlobeMap } from './components/GlobeMap/GlobeMap'
-import { WeatherInfo } from './components/WeatherInfo/WeatherInfo'
+import { WeatherInfo } from './components/WeatherInfo'
 import { LocationData, getLocationData } from './services/LocationService'
 
 export function App() {
@@ -31,7 +31,7 @@ export function App() {
         position: 'relative',
       }}
     >
-      {locationData && <WeatherInfo locationData={locationData} />}
+      <WeatherInfo locationData={locationData} />
       <GlobeMap handleLocaleChange={handleLocaleChange} />
     </div>
   )

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import { ThemeProvider } from 'styled-components'
 import { GlobeMap } from './components/GlobeMap/GlobeMap'
 import { WeatherInfo } from './components/WeatherInfo'
 import { LocationData, getLocationData } from './services/LocationService'
+import { defaultTheme } from './styles/themes/default'
 
 export function App() {
   const [locationData, setLocationData] = useState<LocationData | null>(null)
@@ -23,16 +25,18 @@ export function App() {
   }
 
   return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        margin: '0',
-        position: 'relative',
-      }}
-    >
-      <WeatherInfo locationData={locationData} />
-      <GlobeMap handleLocaleChange={handleLocaleChange} />
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <div
+        style={{
+          width: '100vw',
+          height: '100vh',
+          margin: '0',
+          position: 'relative',
+        }}
+      >
+        <WeatherInfo locationData={locationData} />
+        <GlobeMap handleLocaleChange={handleLocaleChange} />
+      </div>
+    </ThemeProvider>
   )
 }

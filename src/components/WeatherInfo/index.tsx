@@ -1,5 +1,5 @@
 import { LocationData } from '../../services/LocationService'
-import { WeatherInfoContainer } from './styles'
+import { GeolocationInfo, WeatherIcon, WeatherInfoContainer } from './styles'
 
 interface WeatherInfoProps {
   locationData: LocationData | null
@@ -8,7 +8,19 @@ interface WeatherInfoProps {
 export function WeatherInfo({ locationData }: WeatherInfoProps) {
   return (
     <WeatherInfoContainer>
-      <p>Hello Styled</p>
+      <header>
+        <WeatherIcon
+          src={`http://openweathermap.org/img/wn/${locationData?.weatherData?.weather[0].icon}.png`}
+          alt=""
+        />
+        <GeolocationInfo>
+          <h1>{locationData?.geocodeData?.city}</h1>
+          <small>
+            {locationData?.geocodeData?.state},{' '}
+            {locationData?.geocodeData?.country}
+          </small>
+        </GeolocationInfo>
+      </header>
     </WeatherInfoContainer>
   )
 }

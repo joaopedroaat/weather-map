@@ -21,9 +21,13 @@ export const getGeocodeData = async (
       const result = data.results[0]
       const components = result.components
       return {
-        city: components.city || components.town || components.village || null,
-        state: components.state || null,
-        country: components.country || null,
+        city:
+          components.city ||
+          components.town ||
+          components.village ||
+          'Não Identificado',
+        state: components.state || 'Não Identificado',
+        country: components.country || 'Não Identificado',
       }
     }
     return null

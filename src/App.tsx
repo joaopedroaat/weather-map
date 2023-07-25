@@ -8,17 +8,41 @@ import { defaultTheme } from './styles/themes/default'
 
 export function App() {
   const [locationData, setLocationData] = useState<LocationData | null>(null)
-  const [latitude, setLatitude] = useState(0)
-  const [longitude, setLongitude] = useState(0)
+  const [latitude, setLatitude] = useState<number | null>(null)
+  const [longitude, setLongitude] = useState<number | null>(null)
 
   useEffect(() => {
+    const getUserLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            // Successfully got the location
+            setLatitude(position.coords.latitude)
+            setLongitude(position.coords.longitude)
+          },
+          (error) => {
+            // Failed to get the location
+            console.error('Error getting location: ' + error.message)
+          },
+        )
+      } else {
+        console.error('Geolocation is not supported in this browser.')
+      }
+    }
+
     const fetchLocationData = async () => {
-      const data = await getLocationData(latitude, longitude)
-      setLocationData(data)
+      if (latitude !== null && longitude !== null) {
+        const data = await getLocationData(latitude, longitude)
+        setLocationData(data)
+      }
+    }
+
+    if (latitude === null && longitude === null) {
+      getUserLocation()
     }
 
     fetchLocationData()
-  }, [latitude, longitude])
+  }, [latitude, locationData, longitude])
 
   const handleLocaleChange = (latitude: number, longitude: number) => {
     setLatitude(latitude)

@@ -15,8 +15,8 @@ export interface WeatherData {
   main: {
     temp: number
     feelsLike: number
-    tempMin: string
-    tempMax: string
+    tempMin: number
+    tempMax: number
   }
 }
 

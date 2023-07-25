@@ -1,4 +1,4 @@
-import { GeocodeData, getGeocodeData } from './GeoCodeApi'
+import { GeocodeData, getGeocodeData } from './GeocodeApi'
 import { WeatherData, getWeatherData } from './WeatherApi'
 
 export interface LocationData {

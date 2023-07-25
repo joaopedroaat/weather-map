@@ -12,7 +12,6 @@ export const LocationInfoContainer = styled.div`
   padding: 0.5rem;
 
   width: 270px;
-  min-height: 90px;
 
   border-radius: 5px;
 

@@ -42,7 +42,7 @@ export function App() {
     }
 
     fetchLocationData()
-  }, [latitude, locationData, longitude])
+  }, [latitude, longitude])
 
   const handleLocaleChange = (latitude: number, longitude: number) => {
     setLatitude(latitude)

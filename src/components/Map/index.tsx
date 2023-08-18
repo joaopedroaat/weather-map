@@ -2,12 +2,13 @@ import { GoogleMap, MarkerF, useLoadScript } from '@react-google-maps/api'
 import { useEffect, useState } from 'react'
 import { LatLng } from '../../services/LocationService'
 import { LocationInfo } from '../LocationInfo'
+import { MapError } from '../MapError'
 import { MapLoading } from '../MapLoading'
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
 
 export function Map() {
-  const { isLoaded } = useLoadScript({
+  const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: GOOGLE_API_KEY,
   })
 
@@ -45,6 +46,8 @@ export function Map() {
     }
     setMarkerPosition(clickedLatLng)
   }
+
+  if (loadError) return <MapError />
 
   if (!isLoaded) return <MapLoading />
 

@@ -15,4 +15,9 @@ export const GlobalStyle = createGlobalStyle`
     font: 500 1rem 'Roboto Mono', monospace;
     color: ${(props) => props.theme.fg};
   }
+
+  .map-container {
+    width: 100%;
+    height: 100vh;
+  }
 `

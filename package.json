@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.2",
     "axios": "^1.4.0",
     "camelcase-keys": "^8.0.2",
     "leaflet": "^1.9.4",

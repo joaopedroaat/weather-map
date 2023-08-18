@@ -2,6 +2,7 @@ import { GoogleMap, MarkerF, useLoadScript } from '@react-google-maps/api'
 import { useEffect, useState } from 'react'
 import { LatLng } from '../../services/LocationService'
 import { LocationInfo } from '../LocationInfo'
+import { MapLoading } from '../MapLoading'
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
 
@@ -45,7 +46,7 @@ export function Map() {
     setMarkerPosition(clickedLatLng)
   }
 
-  if (!isLoaded) return <div>Loading...</div>
+  if (!isLoaded) return <MapLoading />
 
   return (
     <GoogleMap

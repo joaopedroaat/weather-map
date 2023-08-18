@@ -22,7 +22,7 @@ interface GeocodingResponse {
   results: GeocodingResult[]
 }
 
-export const getGeocodeData = async (
+export const getGeocodingData = async (
   latitude: number,
   longitude: number,
 ): Promise<GeocodeData | null> => {

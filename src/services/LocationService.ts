@@ -1,4 +1,4 @@
-import { GeocodeData, getGeocodeData } from './GeocodeApi'
+import { GeocodeData, getGeocodingData } from './GeocodingApi'
 import { WeatherData, getWeatherData } from './WeatherApi'
 
 export interface LatLng {
@@ -15,7 +15,7 @@ export const getLocationData = async ({
   lng,
 }: LatLng): Promise<LocationData> => {
   const weatherData = await getWeatherData(lat, lng)
-  const geocodeData = await getGeocodeData(lat, lng)
+  const geocodeData = await getGeocodingData(lat, lng)
   return {
     weatherData,
     geocodeData,

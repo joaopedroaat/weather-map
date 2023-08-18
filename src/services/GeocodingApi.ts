@@ -41,8 +41,10 @@ export const getGeocodingData = async (
         state: addressComponents.find((component) =>
           component.types.includes('administrative_area_level_1'),
         )?.long_name,
-        city: addressComponents.find((component) =>
-          component.types.includes('locality'),
+        city: addressComponents.find(
+          (component) =>
+            component.types.includes('locality') ||
+            component.types.includes('administrative_area_level_2'),
         )?.long_name,
       }
     }

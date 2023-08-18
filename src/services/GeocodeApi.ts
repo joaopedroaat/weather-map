@@ -1,11 +1,25 @@
 import axios from 'axios'
 
-const API_KEY = import.meta.env.VITE_OPENCAGE_DATA_API_KEY
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
 
 export interface GeocodeData {
-  city: string | null
-  state: string | null
-  country: string | null
+  country: string | undefined
+  state: string | undefined
+  city: string | undefined
+}
+
+interface AddressComponent {
+  long_name: string
+  short_name: string
+  types: string[]
+}
+
+interface GeocodingResult {
+  address_components: AddressComponent[]
+}
+
+interface GeocodingResponse {
+  results: GeocodingResult[]
 }
 
 export const getGeocodeData = async (
@@ -13,21 +27,23 @@ export const getGeocodeData = async (
   longitude: number,
 ): Promise<GeocodeData | null> => {
   try {
-    const response = await axios.get(
-      `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY}`,
+    const response = await axios.get<GeocodingResponse>(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
     )
     const data = response.data
     if (data && data.results && data.results.length > 0) {
       const result = data.results[0]
-      const components = result.components
+      const addressComponents = result.address_components
       return {
-        city:
-          components.city ||
-          components.town ||
-          components.village ||
-          'Não Identificado',
-        state: components.state || 'Não Identificado',
-        country: components.country || 'Não Identificado',
+        country: addressComponents.find((component) =>
+          component.types.includes('country'),
+        )?.long_name,
+        state: addressComponents.find((component) =>
+          component.types.includes('administrative_area_level_1'),
+        )?.long_name,
+        city: addressComponents.find((component) =>
+          component.types.includes('locality'),
+        )?.long_name,
       }
     }
     return null

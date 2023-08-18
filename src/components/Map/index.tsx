@@ -1,12 +1,9 @@
 import { GoogleMap, MarkerF, useLoadScript } from '@react-google-maps/api'
 import { useEffect, useState } from 'react'
+import { LatLng } from '../../services/LocationService'
+import { LocationInfo } from '../LocationInfo'
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
-
-interface LatLng {
-  lat: number
-  lng: number
-}
 
 export function Map() {
   const { isLoaded } = useLoadScript({
@@ -58,6 +55,7 @@ export function Map() {
       options={{ disableDefaultUI: true }}
       onClick={handleMapClick}
     >
+      <LocationInfo location={markerPosition} />
       <MarkerF position={markerPosition} />
     </GoogleMap>
   )

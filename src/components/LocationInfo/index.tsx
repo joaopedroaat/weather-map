@@ -11,6 +11,7 @@ import {
   WeatherInfo,
 } from './styles'
 
+import loaderSvg from '../../assets/loader.svg'
 interface WeatherInfoProps {
   location: LatLng
 }
@@ -42,7 +43,7 @@ export function LocationInfo({ location }: WeatherInfoProps) {
   if (isLoading)
     return (
       <LocationInfoContainer>
-        <h1>Loading...</h1>
+        <img src={loaderSvg} width={75} height={75} alt="" />
       </LocationInfoContainer>
     )
 
@@ -54,10 +55,10 @@ export function LocationInfo({ location }: WeatherInfoProps) {
           alt=""
         />
         <GeolocationInfo>
-          <h1>{locationData?.geocodeData?.city}</h1>
+          <h1>{locationData?.geocodeData?.city || 'Not identified'}</h1>
           <small>
-            {locationData?.geocodeData?.state},{' '}
-            {locationData?.geocodeData?.country}
+            {locationData?.geocodeData?.state || 'Not identified'},{' '}
+            {locationData?.geocodeData?.country || 'Not identified'}
           </small>
         </GeolocationInfo>
       </header>

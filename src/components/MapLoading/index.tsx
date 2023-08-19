@@ -1,9 +1,11 @@
 import { MapLoadingContainer } from './styles'
 
+import loaderSvg from '../../assets/loader.svg'
+
 export function MapLoading() {
   return (
     <MapLoadingContainer>
-      <h1>Loading your map...</h1>
+      <img src={loaderSvg} alt="" />
     </MapLoadingContainer>
   )
 }

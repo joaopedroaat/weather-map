@@ -59,8 +59,8 @@ export function Map() {
       options={{ disableDefaultUI: true }}
       onClick={handleMapClick}
     >
-      <LocationInfo location={markerPosition} />
       <MarkerF position={markerPosition} />
+      <LocationInfo location={markerPosition} />
     </GoogleMap>
   )
 }

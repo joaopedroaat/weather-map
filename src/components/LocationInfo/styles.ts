@@ -11,8 +11,6 @@ export const LocationInfoContainer = styled.div`
   margin: 1rem;
   padding: 0.5rem;
 
-  width: 270px;
-
   border-radius: 5px;
 
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
@@ -50,6 +48,7 @@ export const GeolocationInfo = styled.div`
 
 export const WeatherInfo = styled.div`
   display: flex;
+  gap: 0.5rem;
   justify-content: space-between;
   flex-direction: row-reverse;
   align-items: center;

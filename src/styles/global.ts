@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body, input, textarea, button {
     font: 500 1rem 'Roboto Mono', monospace;
+    background: ${(props) => props.theme.bg};
     color: ${(props) => props.theme.fg};
   }
 

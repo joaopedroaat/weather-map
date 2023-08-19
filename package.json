@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "João Pedro Tenório",
+    "email": "joaopedroaat@outlook.com",
+    "url": "https://github.com/joaopedroaat"
+  },
+  "license": "ISC",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

@@ -31,8 +31,21 @@ export const getGeocodingData = async (
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
     )
     const data = response.data
+
     if (data && data.results && data.results.length > 0) {
-      const result = data.results[0]
+      const result = data.results.find((possibleResult) =>
+        possibleResult.address_components.find((component) =>
+          component.types.includes('country'),
+        ),
+      )
+
+      if (!result)
+        return {
+          country: undefined,
+          state: undefined,
+          city: undefined,
+        }
+
       const addressComponents = result.address_components
       return {
         country: addressComponents.find((component) =>

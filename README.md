@@ -5,12 +5,6 @@
 
 ### 🏠 [Homepage](https://weather-map-pxmj.onrender.com/)
 
-## Install
-
-```sh
-npm install
-```
-
 ## Author
 
 👤 **João Pedro Tenório**
